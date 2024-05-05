@@ -117,14 +117,16 @@ const AdminDashboard = () => {
 
   const handleSubmitItem = async () => {
     const itemRef = isEditMode
-      ? doc(db, "menus", currentItem.team_id, "items", currentItem.id)
-      : collection(db, "menus", currentItem.team_id, "items");
+      ? doc(db, "menus", currentItem.menu_id, "items", currentItem.id)
+      : collection(db, "menus", currentItem.menu_id, "items");
     isEditMode
       ? await updateDoc(itemRef, currentItem)
       : await addDoc(itemRef, currentItem);
     fetchMenus();
     handleCloseDialog();
-  };
+    };
+ //   if (condition) {..} else { }
+//      condition ? value_if_true : value_if_false
 
   const handleDelete = async (type, id, menuId = null) => {
     if (window.confirm(`Are you sure you want to delete this ${type}?`)) {

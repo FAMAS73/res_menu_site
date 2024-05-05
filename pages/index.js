@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "@/utils/firebaseConfig"; // Adjust the import path as needed
 import { collection, getDocs } from "firebase/firestore";
 import {
+  Grid,
   Box,
   Card,
   CardContent,
@@ -107,14 +108,21 @@ export default function MenuPage() {
       <Typography variant="h4" gutterBottom component="div" sx={{ mt: 2 }}>
         Restaurant Menus
       </Typography>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          overflowY: "auto",
+        }}
+      >
         {menus.map((menu) => (
           <Card
             key={menu.id}
             sx={{
               margin: "12px",
-              minWidth: 300,
-              maxWidth: 300,
+              width: "80%", // Adjusted for better fit in a column layout
+              maxWidth: "600px", // Optional, to prevent the card from becoming too wide on larger screens
               minHeight: 300,
               borderRadius: 0,
               position: "relative",
